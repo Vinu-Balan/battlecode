@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>T.A.L.O.S</title>
+    <script>
+        const names = ["Saravanan S","Kamal Roshan R"];
+        function updateList(){
+            if(names.length===0){
+                var name = document.getElementById("name");
+                var d = document.createElement("h2");
+                d.style.padding = "20px";
+                d.innerHTML = "Participants are not shortlisted yet!"
+                name.appendChild(d);
+            }else{
+                for(let i=0;i<names.length;i++){
+                var name = document.getElementById("name");
+                var d = document.createElement("div");
+                var h = document.createElement("h4");
+                var hr = document.createElement("hr");
+                h.innerHTML = names[i];
+                h.appendChild(hr);
+                d.appendChild(h);
+                name.appendChild(d);
+            }
+            }
+            
+        }
+    </script>
+</head>
+<body onload="updateList()">
+    <script>
+       
+    </script>
+    <div class="back-g">
+        <header>
+            <h1 class="logo-text">T.A.L.O.S</h1>
+        </header>
+        <div class="content-container">
+            <h2 class="content-heading">ROCK-PAPER-SCISSORS</h2>
+            <div class="leaderboard-container">
+                <div class="leader-header">
+                    <h3>Leaderboard <strong>Round 1 Shortlisted Candidates</strong></h3>
+                    <hr>
+                </div>
+                <div id="name">
+                    
+                </div>
+            </div>
+</body>
+</html>
