@@ -72,13 +72,14 @@ def whowin(a,b):
     else:
         return 0
 if __name__=='__main__':
-    d = {0:"ROCK",1:"PAPER",2:"SISSORS"}
+    d = {0:"ROCK",1:"PAPER",2:"SCISSORS"}
     prev_moves_tot = [random.choice([0,1,2]) for x in range(11)]
     your_moves = []
     wins = []
     your_score = 0
     opp_score = 0
     prev_moves = []
+    
     for x in range(11):
         print("Round Number:",x+1)
         your_moves.append(Logic(prev_moves,x+1))
@@ -86,6 +87,7 @@ if __name__=='__main__':
         wins.append(whowin(your_moves[x],prev_moves[x]))
         print("your move: "+str(d[your_moves[x]]),end=' | ')
         print("opponent move: " + str(d[prev_moves[x]]))
+
         if whowin(your_moves[x],prev_moves[x])==1:
             winner = "You Won"
             your_score+=1
@@ -96,6 +98,7 @@ if __name__=='__main__':
             winner = "Match Draw"
         print(winner)
         print("-----------------------------------------------------")
+
     if your_score>opp_score:
         print("You Have won the Game!")
     elif opp_score>your_score:
