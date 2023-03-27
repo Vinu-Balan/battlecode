@@ -28,20 +28,28 @@
                         Code must be written only in python.
                         Your AI can be now tested with the predefined set of moves, but during the battle it will be tested against the AI built by your opponents. So plan your stratergy accordingly!<br><br>
                         <strong>SAMPLE TEST CASE:</strong><br><br>
-                        INPUT: [0,1,0] <span></span># previous moves of the opponent<br><br>
+                        INPUT: <br>[0,1,0] <span></span># previous moves of the opponent<br>
+                        1 # Round Number<br><br>
                         OUTPUT: (According to a random AI)<br><br>
                         ----------------------------------------------------<br>
                         <i>
-                            your move: ROCK opponent move: PAPER<br>
-                        Opponent Won<br>
-                        your move: ROCK opponent move: PAPER<br>
-                        Opponent Won<br>
-                        your move: ROCK opponent move: ROCK<br>
-                        Match Draw<br>
-                        your move: ROCK opponent move: ROCK<br>
-                        Match Draw<br>
-                        -----------------------------------------------------<br>
-                        You Have lost the Game!<br>
+                            Round Number: 1<br>
+                            your move: ROCK | opponent move: SISSORS<br>
+                            You Won<br>
+                            -----------------------------------------------------<br>
+                            Round Number: 2<br>
+                            your move: ROCK | opponent move: SISSORS<br>
+                            You Won<br>
+                            -----------------------------------------------------<br>
+                            Round Number: 3<br>
+                            your move: ROCK | opponent move: ROCK<br>
+                            Match Draw<br>
+                            -----------------------------------------------------<br>
+                            Round Number: 4<br>
+                            your move: ROCK | opponent move: PAPER<br>
+                            Opponent Won<br>
+                            -----------------------------------------------------<br>
+                        You Have Won the Game!<br>
                         </i>
                         
                     </h4>
@@ -51,7 +59,7 @@
 import random
 
 # function to implement AI logic
-def Logic(prev_moves):
+def Logic(prev_moves,round_no):
     # Write your Logic here
     return 0
 
@@ -64,16 +72,19 @@ def whowin(a,b):
     else:
         return 0
 if __name__=='__main__':
-    d = {0:"ROCK",1:"PAPER",2:"SCISSORS"}
-    prev_moves = [random.choice([0,1,2]) for x in range(11)]
+    d = {0:"ROCK",1:"PAPER",2:"SISSORS"}
+    prev_moves_tot = [random.choice([0,1,2]) for x in range(11)]
     your_moves = []
     wins = []
     your_score = 0
     opp_score = 0
+    prev_moves = []
     for x in range(11):
-        your_moves.append(Logic(prev_moves))
+        print("Round Number:",x+1)
+        your_moves.append(Logic(prev_moves,x+1))
+        prev_moves.append(prev_moves_tot[x])
         wins.append(whowin(your_moves[x],prev_moves[x]))
-        print("your move: "+str(d[your_moves[x]]),end=' ')
+        print("your move: "+str(d[your_moves[x]]),end=' | ')
         print("opponent move: " + str(d[prev_moves[x]]))
         if whowin(your_moves[x],prev_moves[x])==1:
             winner = "You Won"
@@ -84,14 +95,12 @@ if __name__=='__main__':
         else:
             winner = "Match Draw"
         print(winner)
-    if your_score>opp_score:
         print("-----------------------------------------------------")
+    if your_score>opp_score:
         print("You Have won the Game!")
     elif opp_score>your_score:
-        print("-----------------------------------------------------")
         print("You Have lost the Game!")
     else:
-        print("-----------------------------------------------------")
         print("Match Draw!")
     </code>             
         </pre>
