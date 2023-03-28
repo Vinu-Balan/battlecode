@@ -1,14 +1,32 @@
 import random
 
 # function to implement AI logicA
-def LogicA(prev_moves):
-    # Write your Logic here
-    return 0
+def LogicA(prev_moves,round_no):
+    if sum(prev_moves)>4:
+        temp = 2
+    elif sum(prev_moves)>2:
+        temp = 1
+    else:
+        temp = 0
+    return temp
 
 # function to implement AI logicB
-def LogicB(prev_moves):
+def LogicB(prev_moves,round_no):
     # Write your Logic here
-    return random.choice([0,1,2])
+    l = []
+    p = []
+    d = {0:1,1:2,2:1}
+    if len(prev_moves)==0:
+        return 0
+    else:
+        l.append(prev_moves[-1])
+        if len(l)==3:
+            p = l.copy()
+        return d[l[-1]]
+        if len(l)>3:
+            return d[p[(len(prev_moves)+1)%3]]
+            
+    return 0
 
 # Driver Code
 def whowin(a,b):
@@ -27,15 +45,13 @@ if __name__=='__main__':
     wins = []
     your_score = 0
     opp_score = 0
-    for x in range(11):
-        a = LogicA(prev_movesB)
-        b = LogicB(prev_movesA)
+    for x in range(9):
+        a = LogicA(prev_movesB,x+1)
+        b = LogicB(prev_movesA,x+1)
         prev_movesA.append(a)
         prev_movesB.append(b)
         print("A move: "+str(d[prev_movesA[x]]),end=' ')
         print("B move: " + str(d[prev_movesB[x]]))
-        print("A score: " + str(your_score), end=' ')
-        print("B score: " + str(opp_score))
         if whowin(prev_movesA[x],prev_movesB[x])==1:
             winner = "A Won"
             your_score+=1
@@ -44,6 +60,8 @@ if __name__=='__main__':
             winner = "B Won"
         else:
             winner = "Match Draw"
+        print("A score: " + str(your_score), end=' ')
+        print("B score: " + str(opp_score))
         print(winner)
     if your_score>opp_score:
         print("-----------------------------------------------------")

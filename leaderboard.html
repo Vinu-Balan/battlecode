@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="styles.css" />
     <title>T.A.L.O.S</title>
     <script>
-        const names = [];
+        const names = ["Kausthuban","RagingTortoise","Philemon Boaz","CODEBREAKER"];
         function updateList(){
             if(names.length===0){
                 var name = document.getElementById("name");
-                var d = document.createElement("h2");
+                var d = document.createElement("h4");
                 d.style.padding = "20px";
                 d.innerHTML = "Participants are not shortlisted yet!"
                 name.appendChild(d);
@@ -44,12 +44,27 @@
             <h2 class="content-heading">ROCK-PAPER-SCISSORS</h2>
             <div class="leaderboard-container">
                 <div class="leader-header">
-                    <h3><strong>Round 1 Shortlisted Candidates</strong></h3>
+                    <h3><strong>Winner</strong></h3>
+                    <hr>
+                </div>
+                <div>
+                    <h2 style="padding:10px;">CODEBREAKER</h2>
+                </div>
+                <div class="leader-header">
+                    <h3><strong>Runner</strong></h3>
+                    <hr>
+                </div>
+                <div>
+                    <h3 style="padding:10px;">Philemon Boaz</h3>
+                </div>
+                <div class="leader-header">
+                    <h3><strong>Final Shortlisted Candidates</strong></h3>
                     <hr>
                 </div>
                 <div id="name">
                     
                 </div>
+                
             </div>
 </body>
 </html>
